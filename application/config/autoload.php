@@ -16,6 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 | -------------------------------------------------------------------
 | Instructions
+| -------------------------------------------------------------------
 |
 | These are the things you can load automatically:
 |

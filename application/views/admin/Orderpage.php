@@ -65,7 +65,7 @@
                         <td><?= $t['statusOrder']; ?></td>
                         <td><?= $t['statusPayment']; ?></td>
                         <td>
-                            <img src="<?= $t['imageUrl']; ?>" alt="foto-order">
+                            <img src="<?= isset($t['imageUrl']) && $t['imageUrl'] ? $t['imageUrl'] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'; ?>" alt="foto-order">
                         </td>
                         <td><?= $t['totalPrices']; ?></td>
                         <td> <a href="#" data-target="#editModal<?= $t['orderCode']; ?>" data-toggle="modal" class="badge badge-warning">Detail</a>
@@ -111,7 +111,7 @@
 
                         <div class="form-group">
                             <label>Status Order</label>
-                            <input type="text" class="form-control" name="status" id="status" value="<?= $t['statusOrder']; ?>">
+                            <input type="text" class="form-control" name="status" id="status" value="<?= $t['statusOrder']; ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label>Status Payment</label>
@@ -125,6 +125,7 @@
                                 <img src="<?= $t['imageUrl']; ?>" id="image" name="image" alt="foto-order">
                             </div>
                         </div>
+                        <input type="hidden" value="<?= $t['imageUrl']; ?>" id="imageUrl" name="imageUrl">
                         <div class="form-group">
                             <label>Total</label>
                             <input type="text" class="form-control" name="total" id="total" value="<?= $t['totalPrices']; ?>" readonly>

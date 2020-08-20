@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Mfood extends CI_Model
+class Mcarousel extends CI_Model
 {
     var $API = "";
     public function __construct()
@@ -15,33 +15,27 @@ class Mfood extends CI_Model
         $this->load->helper('url');
     }
 
-    public function dataFood()
+    public function get()
     {
-        $data = json_decode($this->curl->simple_get($this->API . '/food/list'), true);
+        $data = json_decode($this->curl->simple_get($this->API . '/slide/list'), true);
         return $data['data'];
     }
 
-    public function popFood()
+    public function insert($data)
     {
-        $data = json_decode($this->curl->simple_get($this->API . '/food/populer'), true);
-        return $data['data'];
-    }
-
-    public function insertFood($data)
-    {
-        $insert =  $this->curl->simple_post($this->API . '/food/add', $data, array(CURLOPT_BUFFERSIZE => 10));
+        $insert =  $this->curl->simple_post($this->API . '/slide/add', $data, array(CURLOPT_BUFFERSIZE => 10));
         if ($insert) {
             $this->session->set_flashdata('hasil', 'Insert Data Berhasil');
         } else {
             $this->session->set_flashdata('hasil', 'Insert Data Gagal');
         }
-        redirect('Food');
+        redirect('Carousels');
     }
 
-    public function editFood($data, $id)
+    public function update($data, $id)
     {
 
-        $update =  $this->curl->simple_put($this->API . '/food/update/' . $id, $data, array(CURLOPT_BUFFERSIZE => 10));
+        $update =  $this->curl->simple_put($this->API . '/slide/update/' . $id, $data, array(CURLOPT_BUFFERSIZE => 10));
         if ($update) {
             $this->session->set_flashdata('hasil', 'Update Data Berhasil');
         } else {

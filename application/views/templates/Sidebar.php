@@ -40,6 +40,7 @@
                  <a class="collapse-item" href="<?= base_url('Table') ?>">Data Meja</a>
                  <a class="collapse-item" href="<?= base_url('Food') ?>">Data Makanan</a>
                  <a class="collapse-item" href="<?= base_url('Drinks') ?>">Data Minuman</a>
+                 <a class="collapse-item" href="<?= base_url('Carousels') ?>">Carousel</a>
              </div>
          </div>
      </li>
@@ -55,6 +56,7 @@
              <div class="bg-white py-2 collapse-inner rounded">
                  <a class="collapse-item" href="<?= base_url('Order') ?>">Konfirmasi Order</a>
                  <a class="collapse-item" href="<?= base_url('Pelanggan') ?>">Konfirmasi Pelanggan</a>
+                 <a class="collapse-item" href="<?= base_url('Expired') ?>">Order Expired</a>
              </div>
          </div>
      </li>
@@ -82,6 +84,13 @@
          <a class="nav-link" href="<?= base_url('User') ?>">
              <i class="fas fa-fw fa-cog"></i>
              <span>Konfigurasi User</span></a>
+     </li>
+
+     <hr class="sidebar-divider">
+     <li class="nav-item">
+         <a class="nav-link" href="<?= base_url('Auth/logout') ?>">
+             <i class="fas fa-fw fa-cog"></i>
+             <span>Logout</span></a>
      </li>
 
      <!-- Divider -->

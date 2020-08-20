@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h3>Order Terkonfirmasi</h3>
+        <h3>Order Expired</h3>
     </div>
 
     <div class="row confir">
@@ -29,7 +29,7 @@
                         <td><?= $t['statusOrder']; ?></td>
                         <td><?= $t['statusPayment']; ?></td>
                         <td>
-                            <img src="<?= $t['imageUrl']; ?>" alt="foto-order">
+                            <img src="<?= isset($t['imageUrl']) && $t['imageUrl'] ? $t['imageUrl'] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'; ?>" alt="foto-order">
                         </td>
                         <td><?= $t['totalPrices']; ?></td>
                         <td> <a href="#" data-target="#editModal<?= $t['orderCode']; ?>" data-toggle="modal" class="badge badge-warning">Detail</a>
@@ -90,8 +90,6 @@
                             <label>Total</label>
                             <input type="text" class="form-control" name="total" id="total" value="<?= $t['totalPrices']; ?>" readonly>
                         </div>
-
-                        <input type="submit" name="submit" value="Konfirmasi" class="btn btn-success">
                     </form>
                 </div>
             </div>

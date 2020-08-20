@@ -8,6 +8,12 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        if (!isset($_SESSION['alembana']))
+        {
+            redirect('Auth');
+        }
+
         $this->API = "https://us-central1-reservation-1b2b0.cloudfunctions.net/api";
         $this->load->library('session');
         $this->load->library('curl');

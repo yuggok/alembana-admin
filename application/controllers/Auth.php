@@ -23,13 +23,15 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        if (isset($_POST['submit'])) {
+        if (!empty($_POST)) {
             $data = array(
                 'name'       =>  $this->input->post('uname'),
                 'password'      =>  $this->input->post('pass')
             );
             $login = $this->curl->simple_post($this->API . '/user/login', $data, array(CURLOPT_BUFFERSIZE => 10));
+
             if ($login) {
+                $_SESSION['alembana'] = array('login' => true);
                 redirect('Admin');
             } else {
                 redirect('Auth');
@@ -37,5 +39,11 @@ class Auth extends CI_Controller
         } else {
             redirect('Auth');
         }
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['alembana']);
+        redirect('Auth');
     }
 }

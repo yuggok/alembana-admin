@@ -19,7 +19,7 @@
                 <tr>
                     <td><?= $d["name"]; ?></td>
                     <td><?= $d['type']; ?></td>
-                    <td>Foto</td>
+                    <td><img src="<?= isset($d['filePath']) ? $d['filePath'] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'; ?>" width="100px"/></td>
                     <td><?= $d['price']; ?></td>
                     <td><a href="<?php base_url(); ?>Drinks/deleteData/<?= $d['drinkId']; ?>" class="badge badge-danger" onclick="return confirm('Anda Akan Menghapus Data Ini ?');"> Hapus </a>
                         <a href="#" data-target="#editModal<?= $d['drinkId']; ?>" data-toggle="modal" class="badge badge-warning">Edit</a>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label">Pilih Foto Minuman</label>
-                            <input type="file" class="form-control-file" name="image" id="image">
+                            <input type="file" class="form-control-file" name="file" id="file">
                     </div>
                     <input type="submit" name="submit" value="Submit" class="btn btn-success">
                 </form>
@@ -89,9 +89,10 @@
                             <label>Harga</label>
                             <input type="number" class="form-control" value="<?= $d['price']; ?>" name="price" id="price" placeholder="Masukkan Harga">
                         </div>
+                        <input type="hidden" value="<?= isset($d['filePath']) ? $d['filePath'] : ''; ?>" name="filePath" id="filePath">
                         <div class="form-group">
                             <label">Pilih Foto Makanan</label>
-                                <input type="file" class="form-control-file" name="image" id="image">
+                                <input type="file" class="form-control-file" name="file" id="file">
                         </div>
                         <input type="submit" name="submit" value="submit" class="btn btn-success">
                     </form>

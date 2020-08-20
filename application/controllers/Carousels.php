@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Food extends CI_Controller
+class Carousels extends CI_Controller
 {
     var $API = "";
     public function __construct()
@@ -17,15 +17,15 @@ class Food extends CI_Controller
         $this->load->library('curl');
         $this->load->helper('form');
         $this->load->helper('url');
-        $this->load->model('Mfood');
+        $this->load->model('Mcarousel');
     }
     public function index()
     {
-        $data['food'] = $this->Mfood->dataFood();
+        $data['data'] = $this->Mcarousel->get();
         $this->load->view('templates/Header');
         $this->load->view('templates/Sidebar');
         $this->load->view('templates/Topbar');
-        $this->load->view('admin/Foodpage', $data);
+        $this->load->view('admin/Carouselpage', $data);
         $this->load->view('templates/Footer');
     }
 
@@ -35,14 +35,12 @@ class Food extends CI_Controller
             $imgUrl = $this->uploadFile();
 
             $data = array(
-                'name'       =>  $this->input->post('name'),
-                'price'      =>  $this->input->post('price'),
-                'type' =>  $this->input->post('type'),
-                'filePath' => $imgUrl
+                'title'       =>  $this->input->post('title'),
+                'image' => $imgUrl
             );
-            $this->Mfood->insertFood($data);
+            $this->Mcarousel->insert($data);
         } else {
-            redirect('Food');
+            redirect('Carousels');
         }
     }
 
@@ -56,36 +54,34 @@ class Food extends CI_Controller
             if ($imgUrl)
                 $filePath = $imgUrl;
             else
-                $filePath = $this->input->post('filePath');
+                $filePath = $this->input->post('image');
 
             $data = array(
 
-                'name'       =>  $this->input->post('name'),
-                'price'      =>  $this->input->post('price'),
-                'type' =>  $this->input->post('type'),
-                'filePath' => $filePath
+                'title'       =>  $this->input->post('title'),
+                'image' => $filePath
             );
-            $this->Mfood->editFood($data, $id);
-            redirect('Food');
+            $this->Mcarousel->update($data, $id);
+            redirect('Carousels');
         } else {
-            $params = array('foodId' =>  $this->uri->segment(3));
-            $data['food'] = json_decode($this->curl->simple_get($this->API . '/food/list', $params));
-            $this->load->view('admin/Foodpage', $data);
+            $params = array('slideId' =>  $this->uri->segment(3));
+            $data['data'] = json_decode($this->curl->simple_get($this->API . '/slide/list', $params));
+            $this->load->view('admin/Carouselpage', $data);
         }
     }
 
     public function deleteData($id)
     {
         if (empty($id)) {
-            redirect('Food');
+            redirect('Carousels');
         } else {
-            $delete =  $this->curl->simple_delete($this->API . '/food/delete/' . $id, array(CURLOPT_BUFFERSIZE => 10));
+            $delete =  $this->curl->simple_delete($this->API . '/slide/delete/' . $id, array(CURLOPT_BUFFERSIZE => 10));
             if ($delete) {
                 $this->session->set_flashdata('hasil', 'Delete Data Berhasil');
             } else {
                 $this->session->set_flashdata('hasil', 'Delete Data Gagal');
             }
-            redirect('Food');
+            redirect('Carousels');
         }
     }
 

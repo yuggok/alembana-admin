@@ -14,7 +14,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form action="<?= base_url() ?>Auth/login" class="user">
+                                    <form action="<?= base_url() ?>Auth/login" class="user" method="post">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" id="uname" name="uname" placeholder="Masukkan Username" required>
                                         </div>

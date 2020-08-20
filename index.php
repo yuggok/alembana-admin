@@ -35,7 +35,8 @@
  * @since	Version 1.0.0
  * @filesource
  */
-
+session_start();
+session_destroy();
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

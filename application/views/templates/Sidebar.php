@@ -72,7 +72,6 @@
          </a>
          <div id="collapseUtil" class="collapse" aria-labelledby="headingUtil" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="<?= base_url('Event') ?>">Event</a>
                  <a class="collapse-item" href="<?= base_url('Popfood') ?>">Makanan Populer</a>
                  <a class="collapse-item" href="<?= base_url('Popdrink') ?>">Minuman Populer</a>
              </div>

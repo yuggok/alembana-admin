@@ -25,6 +25,7 @@
                     <td>Nomor Meja</td>
                     <td>Type</td>
                     <td>Jumlah Kursi</td>
+                    <td>Foto</td>
                     <!-- <td>Waktu Tersedia</td> -->
                     <td>Action</td>
                 </tr>
@@ -34,6 +35,7 @@
                     <td><?= $t['numberOfTable']; ?></td>
                     <td><?= $t['type']; ?></td>
                     <td><?= $t['manyOfSeats']; ?></td>
+                    <td><img src="<?= isset($t['filePath']) ? $t['filePath'] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'; ?>" width="100px"/></td>
                     <!-- <td><?= $t['avalaibleTime']; ?></td> -->
                     <td><a href="<?php base_url(); ?>Table/deleteData/<?= $t['tableId']; ?>" class="badge badge-danger" onclick="return confirm('Anda Akan Menghapus Data Ini ?');"> Hapus </a>
                         <a href="#" data-target="#editModal<?= $t['tableId']; ?>" data-toggle="modal" class="badge badge-warning">Edit</a>
@@ -68,6 +70,10 @@
                     <div class="form-group">
                         <label>Waktu Tersedia</label>
                         <input type="text" class="form-control" name="avail" id="avail" placeholder="Masukkan Waktu Tersedianya Meja">
+                    </div>
+                    <div class="form-group">
+                        <label">Pilih Foto Meja</label>
+                        <input type="file" class="form-control-file" name="file" id="file">
                     </div>
                     <input type="submit" name="submit" value="Submit" class="btn btn-success">
                 </form>
@@ -105,6 +111,11 @@
                         <div class="form-group">
                             <label>Waktu Tersedia</label>
                             <input type="text" class="form-control" name="avail" id="avail" value="<?= $d['avalaibleTime']; ?>"" placeholder=" Masukkan Waktu Tersedianya Meja">
+                        </div>
+                        <input type="hidden" value="<?= isset($d['filePath']) ? $d['filePath'] : ''; ?>" name="filePath" id="filePath">
+                        <div class="form-group">
+                            <label">Pilih Foto Meja</label>
+                            <input type="file" class="form-control-file" name="file" id="file">
                         </div>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
                     </form>

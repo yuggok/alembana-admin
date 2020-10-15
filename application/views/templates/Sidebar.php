@@ -77,7 +77,12 @@
              </div>
          </div>
      </li>
-
+     <hr class="sidebar-divider">
+     <li class="nav-item">
+         <a class="nav-link" href="<?= base_url('availTable') ?>">
+             <i class="fas fa-fw fa-cog"></i>
+             <span>Ketersediaan Meja</span></a>
+     </li>
      <hr class="sidebar-divider">
      <li class="nav-item">
          <a class="nav-link" href="<?= base_url('User') ?>">
